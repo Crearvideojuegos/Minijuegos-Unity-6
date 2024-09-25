@@ -7,14 +7,15 @@ public class CheckGround : MonoBehaviour
     {
         if(other.gameObject.tag == "Ground")
         {
-            Debug.Log("Ha caido en el suelo");
+            GameManager.Instance.textResult.text = "¡Te has estrellado!";
+
         } else if(other.gameObject.tag == "Water")
         {
-            GameManager.Instance.Points++;
-            Debug.Log("Ha caido en el agua");
+            GameManager.Instance.textResult.text = "¡Has sobrevivido al balconing!";
         }
 
         GameManager.Instance.GameActive = false;
+        GameManager.Instance.HideShowUI();
         GameManager.Instance.ResetPositions();
     }
 }

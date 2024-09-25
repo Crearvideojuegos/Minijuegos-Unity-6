@@ -17,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
             _IA_PlayerController = new IA_PlayerController();
             _IA_PlayerController.PlayerController.Falling.performed += ctx => Falling(); //Key Space
             _characterController = GetComponent<CharacterController>();
-
-            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void Start() 
@@ -76,6 +74,8 @@ public class PlayerMovement : MonoBehaviour
         private void Falling()
         {
             GameManager.Instance.GameActive = true;
+            GameManager.Instance.HideShowUI();
+            GameManager.Instance.textResult.text = "";
             _anim.SetBool("ZombiFalling", true);
             StartCoroutine(MoveAlone());
         }
